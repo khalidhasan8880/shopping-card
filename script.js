@@ -8,23 +8,33 @@ const caseMinusBtn = document.getElementById('case-minus-btn');
 const caseInput = document.getElementById('case-input');
 const casePlusBtn = document.getElementById('case-plus-btn');
 
-// iphone section event handler
-// increase 
-iphonePlusBtn.addEventListener('click', function(){
+function crease(isIncrease) {
     const inputStringValue = iphoneInput.value;
-    let inputParseIntValue = parseInt(inputStringValue);
-    
-    let increase = inputParseIntValue + 1;
-    iphoneInput.value = increase;
+    const inputParseIntValue = parseInt(inputStringValue);
+    let newInputValue;
+    if (isIncrease === true) {
+        newInputValue = inputParseIntValue + 1;
+    }
+    else{
+        newInputValue = inputParseIntValue - 1;
+        if(newInputValue <= 0){
+            return alert('you cant do that')
+        }
+    }
+    iphoneInput.value = newInputValue;
+
+    return newInputValue;
+}
+
+
+// increse
+iphonePlusBtn.addEventListener('click', function(){
+    const newInputValue = crease(true)
+    console.log(newInputValue);
 });
 // decrease
 iphoneMinusBtn.addEventListener('click', function(){
-    const inputStringValue = iphoneInput.value;
-    let inputParseIntValue = parseInt(inputStringValue);
-    if(inputParseIntValue <= 0){
-        return  alert('you Cant do that')
-    }
-    let increase = inputParseIntValue -1;
-    iphoneInput.value = increase;
+    const newInputValue = crease(false)
+    console.log(newInputValue);
 });
 
